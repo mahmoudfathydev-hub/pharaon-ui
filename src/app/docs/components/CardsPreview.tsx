@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Copy,
   Check,
@@ -34,6 +35,7 @@ import {
   Loader2,
   Crown,
   Sparkles,
+  Quote,
 } from "lucide-react";
 import cardsData from "@/data/Card.json";
 
