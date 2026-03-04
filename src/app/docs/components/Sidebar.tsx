@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import buttonsData from "@/data/Button.json";
+import cardsData from "@/data/Card.json";
 
 interface SidebarChild {
   id: string;
@@ -35,6 +36,11 @@ const buttonChildren: SidebarChild[] = buttonsData.map((btn) => ({
   label: btn.title,
 }));
 
+const cardChildren: SidebarChild[] = cardsData.map((card) => ({
+  id: card.id,
+  label: card.title,
+}));
+
 const sidebarItems: SidebarItem[] = [
   {
     id: 1,
@@ -46,11 +52,7 @@ const sidebarItems: SidebarItem[] = [
     id: 2,
     title: "Cards",
     icon: <Layout className="h-4 w-4" />,
-    children: [
-      { id: "card-1", label: "Basic Card" },
-      { id: "card-2", label: "Interactive Card" },
-      { id: "card-3", label: "Glass Card" },
-    ],
+    children: cardChildren,
   },
   {
     id: 3,
@@ -94,7 +96,7 @@ const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
             "bg-[#0F172A] border border-white/5",
             "transition-all duration-300",
             "hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10",
-            "group"
+            "group",
           )}
         >
           <div className="flex items-center gap-3">
@@ -110,7 +112,7 @@ const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
           <ChevronDown
             className={cn(
               "h-4 w-4 text-blue-400 transition-transform duration-300",
-              open && "rotate-180"
+              open && "rotate-180",
             )}
           />
         </button>
@@ -123,7 +125,7 @@ const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
           "w-60 max-h-80 overflow-y-auto p-2 rounded-2xl",
           "bg-[#0B1120]/95 backdrop-blur-xl",
           "border border-white/5 shadow-2xl shadow-black/50",
-          "animate-in fade-in-0 zoom-in-95"
+          "animate-in fade-in-0 zoom-in-95",
         )}
       >
         {item.children.map((child) => {
@@ -137,14 +139,14 @@ const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
                 "focus:outline-none",
                 isActive
                   ? "bg-blue-500/20 text-white pl-4"
-                  : "text-white/70 hover:bg-blue-500/15 hover:text-white hover:pl-4 focus:bg-blue-500/20"
+                  : "text-white/70 hover:bg-blue-500/15 hover:text-white hover:pl-4 focus:bg-blue-500/20",
               )}
               onClick={() => handleClick(child.id)}
             >
               <div
                 className={cn(
                   "h-1.5 w-1.5 rounded-full mr-2 shrink-0",
-                  isActive ? "bg-blue-400" : "bg-blue-500"
+                  isActive ? "bg-blue-400" : "bg-blue-500",
                 )}
               />
               {child.label}
@@ -160,9 +162,7 @@ export const DocsSidebar = () => {
   return (
     <aside className="h-screen w-72 p-6 bg-[#070B14] border-r border-white/5 flex flex-col rounded-2xl">
       <div className="mb-10">
-        <h2 className="text-xl font-bold text-white">
-          UI Components
-        </h2>
+        <h2 className="text-xl font-bold text-white">UI Components</h2>
         <p className="text-sm text-white/40 mt-1">
           Professional Dark Blue System
         </p>

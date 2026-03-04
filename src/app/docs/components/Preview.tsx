@@ -18,6 +18,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import buttonsData from "@/data/Button.json";
+import cardsData from "@/data/Card.json";
+import CardsPreview from "./CardsPreview";
 
 interface ButtonData {
   id: string;
@@ -28,8 +30,23 @@ interface ButtonData {
   dependencies: string[];
 }
 
+interface CardData {
+  id: string;
+  title: string;
+  preview: string;
+  code: string;
+  how_to_use: string;
+  dependencies: string[];
+}
+
 /* ─── Copy Button ─── */
-const CopyButton = ({ text, label = "Copy" }: { text: string; label?: string }) => {
+const CopyButton = ({
+  text,
+  label = "Copy",
+}: {
+  text: string;
+  label?: string;
+}) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -118,7 +135,10 @@ const ButtonDemo = ({ id }: { id: string }) => {
       <div className="bg-slate-950 p-8 rounded-xl">
         <button className="relative inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-white rounded-xl overflow-hidden group hover:scale-[1.02] active:scale-[0.97] transition-transform duration-200">
           <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500" />
-          <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 blur-md opacity-60 animate-spin" style={{ animationDuration: "3s" }} />
+          <span
+            className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 blur-md opacity-60 animate-spin"
+            style={{ animationDuration: "3s" }}
+          />
           <span className="relative z-10 flex items-center justify-center gap-2 px-5 py-2 bg-slate-950 rounded-[10px] w-full h-full">
             Discover
           </span>
@@ -155,7 +175,11 @@ const ButtonDemo = ({ id }: { id: string }) => {
     ),
   };
 
-  return demos[id] || <span className="text-white/40 text-sm">No demo available</span>;
+  return (
+    demos[id] || (
+      <span className="text-white/40 text-sm">No demo available</span>
+    )
+  );
 };
 
 /* ─── Code Block ─── */
@@ -244,12 +268,10 @@ const WelcomeState = () => {
       <div className="p-5 rounded-3xl bg-blue-500/10 border border-blue-500/20 mb-6">
         <Eye className="w-10 h-10 text-blue-400" />
       </div>
-      <h2 className="text-2xl font-bold text-white mb-3">
-        Component Preview
-      </h2>
+      <h2 className="text-2xl font-bold text-white mb-3">Component Preview</h2>
       <p className="text-white/50 max-w-md text-sm leading-relaxed">
-        Select a component from the sidebar to see its live preview,
-        source code, usage examples, and dependencies.
+        Select a component from the sidebar to see its live preview, source
+        code, usage examples, and dependencies.
       </p>
       <div className="flex items-center gap-2 mt-8 text-white/30 text-xs">
         <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
@@ -289,8 +311,18 @@ function Preview() {
     return <WelcomeState />;
   }
 
+  // Check if this is a card component
+  const cardComponent = (cardsData as CardData[]).find(
+    (card) => card.id === componentId,
+  );
+
+  if (cardComponent) {
+    return <CardsPreview />;
+  }
+
+  // Otherwise, treat as button component
   const component = (buttonsData as ButtonData[]).find(
-    (btn) => btn.id === componentId
+    (btn) => btn.id === componentId,
   );
 
   if (!component) {
@@ -298,9 +330,10 @@ function Preview() {
   }
 
   const npmDeps = component.dependencies.filter(
-    (d) => d !== "react" && d !== "react-dom"
+    (d) => d !== "react" && d !== "react-dom",
   );
-  const npmInstallCmd = npmDeps.length > 0 ? `npm install ${npmDeps.join(" ")}` : "";
+  const npmInstallCmd =
+    npmDeps.length > 0 ? `npm install ${npmDeps.join(" ")}` : "";
 
   return (
     <div className="space-y-8">
@@ -310,7 +343,8 @@ function Preview() {
           {component.title}
         </h1>
         <p className="text-white/40 text-sm">
-          Copy-ready component with live preview, source code, and usage example.
+          Copy-ready component with live preview, source code, and usage
+          example.
         </p>
       </div>
 
@@ -327,21 +361,31 @@ function Preview() {
           {/* Steps */}
           <div className="space-y-3">
             <div className="flex items-start gap-3">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">1</span>
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">
+                1
+              </span>
               <p className="text-sm text-white/60 leading-relaxed">
-                Install the required dependencies listed below, then create a new file for this component in your project.
+                Install the required dependencies listed below, then create a
+                new file for this component in your project.
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">2</span>
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">
+                2
+              </span>
               <p className="text-sm text-white/60 leading-relaxed">
-                Copy the component code from the <span className="text-blue-400 font-medium">Code</span> tab above and paste it into your file.
+                Copy the component code from the{" "}
+                <span className="text-blue-400 font-medium">Code</span> tab
+                above and paste it into your file.
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">3</span>
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">
+                3
+              </span>
               <p className="text-sm text-white/60 leading-relaxed">
-                Import and use the component in your page like the example below:
+                Import and use the component in your page like the example
+                below:
               </p>
             </div>
           </div>
@@ -353,7 +397,9 @@ function Preview() {
             </div>
             <div className="p-4 overflow-x-auto">
               <pre className="text-sm leading-relaxed">
-                <code className="text-blue-300/90 font-mono">{component.how_to_use}</code>
+                <code className="text-blue-300/90 font-mono">
+                  {component.how_to_use}
+                </code>
               </pre>
             </div>
           </div>
