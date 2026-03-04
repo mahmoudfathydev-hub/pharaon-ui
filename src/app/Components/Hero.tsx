@@ -84,34 +84,33 @@ const CodePreviewCard = () => {
 
 export default function Hero() {
     return (
-        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 overflow-hidden">
+        <section className="relative pt-24 pb-12 md:pt-36 md:pb-20 overflow-hidden bg-[#05070a]">
             <div className="absolute top-1/4 -left-20 w-72 md:w-96 h-72 md:h-96 bg-blue-600/20 rounded-full blur-[80px] md:blur-[120px]"></div>
             <div className="absolute bottom-1/4 -right-20 w-72 md:w-96 h-72 md:h-96 bg-cyan-600/10 rounded-full blur-[80px] md:blur-[120px]"></div>
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="space-y-8 relative z-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold animate-in slide-in-from-top duration-700">
                         <Sparkles size={14} />
-                        <span>Introducing Pharon-UI v1.0</span>
+                        <span>Introducing NovaUI v1.0</span>
                     </div>
                     <div className="space-y-4">
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-                            Build Type-Safe UIs <br />
+                            Build with <br />
                             <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300">
-                                at Warp Speed
+                                Copy-Ready Components
                             </span>
                         </h1>
                         <p className="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed">
-                            The modern React component library with built-in Zod validation, clean architecture, and copy-ready code blocks. Production-ready by default.
+                            The modern React library with built-in Zod validation. No installation required—just copy the code, paste it into your project, and ship.
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <button className="group px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-500 transition-all duration-300 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-2">
-                            Start Building
+                            Explore Components
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                         <button className="px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2">
-                            <Code2 size={20} className="text-blue-400" />
-                            Explore Components
+                            View on GitHub
                         </button>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/5">
