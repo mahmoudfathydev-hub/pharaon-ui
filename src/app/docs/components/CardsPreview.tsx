@@ -3,62 +3,12 @@
 import React, { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Copy,
-  Check,
-  Code2,
-  Eye,
-  BookOpen,
-  Package,
-  Terminal,
-  Heart,
-  User,
-  Star,
-  MapPin,
-  Calendar,
-  TrendingUp,
-  TrendingDown,
-  ShoppingCart,
-  CheckCircle,
-  AlertCircle,
-  Info,
-  X,
-  ArrowRight,
-  Zap,
-  Shield,
-  Globe,
-  Mail,
-  Link as LinkIcon,
-  Clock,
-  Plus,
-  Trash2,
-  Loader2,
-  Crown,
-  Sparkles,
-  Quote,
-  Share2,
-  Github,
-  Twitter,
-  Linkedin,
-  Activity,
-  BarChart3,
-  ArrowUp,
-  ArrowDown,
-  Bookmark,
-  Eye as EyeIcon,
-} from "lucide-react";
+import { Copy, Check, Code2, Eye, BookOpen, Package, Terminal, Heart, User, Star, MapPin, Calendar, TrendingUp, TrendingDown, ShoppingCart, CheckCircle, AlertCircle, Info, X, ArrowRight, Zap, Shield, Globe, Mail, Link as LinkIcon, Clock, Plus, Trash2, Loader2, Crown, Sparkles, Quote, Share2, Github, Twitter, Linkedin, Activity, BarChart3, ArrowUp, ArrowDown, Bookmark, Eye as EyeIcon,} from "lucide-react";
 import cardsData from "@/data/Card.json";
 
-interface CardData {
-  id: string;
-  title: string;
-  preview: string;
-  code: string;
-  how_to_use: string;
-  dependencies: string[];
+interface CardData {id: string;title: string;preview: string;code: string;how_to_use: string;dependencies: string[];
 }
 
-/* ─── Copy Button ─── */
 const CopyButton = ({
   text,
   label = "Copy",
@@ -98,10 +48,7 @@ const CardDemo = ({ id }: { id: string }) => {
   const demos: Record<string, React.ReactNode> = {
     "basic-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
-
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-blue-500/50 shadow-2xl shadow-blue-500/25 p-8 transition-all duration-500">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-black mb-4 text-white animate-fade-in">
@@ -112,10 +59,7 @@ const CardDemo = ({ id }: { id: string }) => {
           <div className="text-white/90 text-center leading-relaxed">
             This is a simple animated card
           </div>
-
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl mt-6">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -125,7 +69,6 @@ const CardDemo = ({ id }: { id: string }) => {
           </button>
         </div>
 
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-blue-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-float"
@@ -138,13 +81,10 @@ const CardDemo = ({ id }: { id: string }) => {
       </div>
     ),
     "card-with-image": (
-      <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
+      <div className="relative group max-w-sm"> 
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-emerald-500/50 shadow-2xl shadow-emerald-500/25 overflow-hidden transition-all duration-500">
-          {/* Image section */}
           <div className="relative h-48 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-cyan-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -160,10 +100,7 @@ const CardDemo = ({ id }: { id: string }) => {
             <div className="text-white/90 text-center leading-relaxed">
               Beautiful mountain landscape
             </div>
-
-            {/* CTA Button */}
             <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl mt-6">
-              {/* Animated button background */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -173,8 +110,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </button>
           </div>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-emerald-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-teal-400 rounded-full animate-float"
@@ -188,12 +123,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "glassmorphism-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-amber-500/50 shadow-2xl shadow-amber-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Sparkles className="w-3 h-3" />
@@ -215,9 +147,7 @@ const CardDemo = ({ id }: { id: string }) => {
             Frosted glass effect
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl mt-6">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -226,8 +156,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </span>
           </button>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-amber-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-orange-400 rounded-full animate-float"
@@ -241,12 +169,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "gradient-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-violet-500/50 shadow-2xl shadow-violet-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Crown className="w-4 h-4" />
@@ -268,9 +193,7 @@ const CardDemo = ({ id }: { id: string }) => {
             Elegant gradient design
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl mt-6">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -279,8 +202,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </span>
           </button>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-violet-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-float"
@@ -294,12 +215,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "interactive-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-cyan-500/50 shadow-2xl shadow-cyan-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Zap className="w-3 h-3" />
@@ -321,9 +239,7 @@ const CardDemo = ({ id }: { id: string }) => {
             Hover and click effects
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -333,7 +249,6 @@ const CardDemo = ({ id }: { id: string }) => {
           </button>
         </div>
 
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-cyan-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-blue-400 rounded-full animate-float"
@@ -347,12 +262,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "stats-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-emerald-500/50 shadow-2xl shadow-emerald-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <TrendingUp className="w-3 h-3" />
@@ -375,7 +287,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          {/* Features list */}
           <div className="space-y-4 mb-8 text-white">
             {["+12% growth", "Real-time analytics", "Advanced metrics"].map(
               (feature, index) => (
@@ -404,9 +315,7 @@ const CardDemo = ({ id }: { id: string }) => {
             )}
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -415,8 +324,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </span>
           </button>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-emerald-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-green-400 rounded-full animate-float"
@@ -430,12 +337,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "testimonial-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-amber-500/50 shadow-2xl shadow-amber-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Star className="w-3 h-3" />
@@ -454,11 +358,9 @@ const CardDemo = ({ id }: { id: string }) => {
           </div>
 
           <div className="text-white/90 text-center leading-relaxed mb-6 italic">
-            "This platform has completely transformed how we handle our
-            workflow. Absolutely incredible!"
+            &quot;This platform has completely transformed how we handle our
+            workflow. Absolutely incredible!&quot;
           </div>
-
-          {/* Rating stars */}
           <div className="flex justify-center gap-1 mb-6">
             {[1, 2, 3, 4, 5].map((i) => (
               <Star
@@ -467,8 +369,6 @@ const CardDemo = ({ id }: { id: string }) => {
               />
             ))}
           </div>
-
-          {/* Author section */}
           <div className="flex items-center justify-center gap-4">
             <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg bg-gradient-to-br from-blue-400 to-purple-500" />
             <div className="text-center">
@@ -476,10 +376,7 @@ const CardDemo = ({ id }: { id: string }) => {
               <p className="text-amber-400 text-sm">CEO</p>
             </div>
           </div>
-
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl mt-6">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -489,7 +386,6 @@ const CardDemo = ({ id }: { id: string }) => {
           </button>
         </div>
 
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-amber-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-yellow-400 rounded-full animate-float"
@@ -503,12 +399,9 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "pricing-card": (
       <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-purple-500/50 shadow-2xl shadow-purple-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Crown className="w-4 h-4" />
@@ -531,7 +424,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          {/* Features list */}
           <div className="space-y-4 mb-8 text-white">
             {[
               "Unlimited projects",
@@ -562,9 +454,7 @@ const CardDemo = ({ id }: { id: string }) => {
             ))}
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -573,8 +463,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </span>
           </button>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-amber-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-pink-400 rounded-full animate-float"
@@ -587,13 +475,10 @@ const CardDemo = ({ id }: { id: string }) => {
       </div>
     ),
     "feature-card": (
-      <div className="relative group max-w-sm">
-        {/* Animated border gradient */}
+        <div className="relative group max-w-sm">
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 opacity-100 transition-opacity duration-500 group-hover:opacity-100" />
 
-        {/* Main card container */}
         <div className="relative backdrop-blur-xl rounded-3xl border-2 bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-purple-500/50 shadow-2xl shadow-purple-500/25 p-8 transition-all duration-500">
-          {/* Popular badge */}
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-pulse">
               <Zap className="w-3 h-3" />
@@ -615,7 +500,6 @@ const CardDemo = ({ id }: { id: string }) => {
             Lightning fast
           </div>
 
-          {/* Features list */}
           <div className="space-y-4 mb-8 text-white">
             {["Optimized code", "Instant loading", "Zero latency"].map(
               (feature, index) => (
@@ -644,9 +528,7 @@ const CardDemo = ({ id }: { id: string }) => {
             )}
           </div>
 
-          {/* CTA Button */}
           <button className="w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group bg-gradient-to-r from-white to-slate-100 text-slate-900 border-2 border-white/20 hover:scale-105 hover:shadow-2xl">
-            {/* Animated button background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
             <span className="relative z-10 flex items-center justify-center gap-2">
@@ -655,8 +537,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </span>
           </button>
         </div>
-
-        {/* Floating particles */}
         <div className="absolute -top-2 -left-2 w-2 h-2 bg-purple-400 rounded-full animate-float" />
         <div
           className="absolute -top-1 -right-3 w-1.5 h-1.5 bg-pink-400 rounded-full animate-float"
@@ -670,9 +550,7 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "profile-card": (
       <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden group max-w-sm">
-        {/* Animated header gradient */}
         <div className="relative h-32 bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-500 overflow-hidden">
-          {/* Animated pattern overlay */}
           <div className="absolute inset-0 opacity-20">
             {[...Array(6)].map((_, i) => (
               <div
@@ -688,7 +566,6 @@ const CardDemo = ({ id }: { id: string }) => {
         </div>
 
         <div className="relative px-6 pb-6">
-          {/* Avatar with sophisticated hover effect */}
           <div className="absolute -top-12 left-6">
             <div className="w-24 h-24 rounded-full border-4 border-white shadow-lg bg-gradient-to-br from-blue-400 to-purple-500" />
           </div>
@@ -701,8 +578,6 @@ const CardDemo = ({ id }: { id: string }) => {
             <p className="text-slate-600 text-sm mb-6 leading-relaxed">
               Creative designer
             </p>
-
-            {/* Contact information */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-slate-600 text-sm group">
                 <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-purple-100 transition-colors">
@@ -711,8 +586,6 @@ const CardDemo = ({ id }: { id: string }) => {
                 <span className="font-medium">alex@example.com</span>
               </div>
             </div>
-
-            {/* Social links */}
             <div className="flex gap-2 mt-6">
               {[
                 { icon: Github, label: "GitHub" },
@@ -733,7 +606,6 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "notification-card": (
       <div className="relative rounded-2xl border p-5 shadow-lg overflow-hidden bg-emerald-50 border-emerald-200 max-w-sm">
-        {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(4)].map((_, i) => (
             <div
@@ -748,39 +620,29 @@ const CardDemo = ({ id }: { id: string }) => {
         </div>
 
         <div className="flex items-start gap-4 relative z-10">
-          {/* Icon container with pulse effect */}
           <div className="flex-shrink-0 relative">
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-100">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
             </div>
           </div>
-
-          {/* Content */}
           <div className="flex-1 min-w-0">
             <h4 className="font-semibold text-emerald-900 mb-1">Success!</h4>
             <p className="text-sm text-emerald-700 leading-relaxed">
               Your changes have been saved
             </p>
           </div>
-
-          {/* Close button */}
           <button className="flex-shrink-0 text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-lg hover:bg-slate-200/50">
             <X className="w-4 h-4" />
           </button>
         </div>
-
-        {/* Progress bar */}
         <div className="absolute bottom-0 left-0 h-1 bg-emerald-400 opacity-30" />
       </div>
     ),
     "event-card": (
       <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden group max-w-sm">
-        {/* Image container with parallax effect */}
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-400 to-pink-500">
-          {/* Animated overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* Date badge with animation */}
           <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-purple-600" />
@@ -791,14 +653,12 @@ const CardDemo = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        {/* Content section */}
         <div className="p-6">
           <h3 className="text-xl font-bold text-slate-900 mb-3">
             Tech Conference
           </h3>
 
           <div className="space-y-3 mb-6">
-            {/* Location */}
             <div className="flex items-center gap-3 text-slate-600 text-sm group">
               <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-purple-100 transition-colors">
                 <MapPin className="w-4 h-4" />
@@ -806,7 +666,6 @@ const CardDemo = ({ id }: { id: string }) => {
               <span className="font-medium">San Francisco</span>
             </div>
 
-            {/* Time */}
             <div className="flex items-center gap-3 text-slate-600 text-sm group">
               <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-purple-100 transition-colors">
                 <Clock className="w-4 h-4" />
@@ -815,7 +674,6 @@ const CardDemo = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          {/* CTA Button */}
           <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-4 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group">
             <span>Register Now</span>
             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
@@ -827,35 +685,26 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "product-card": (
       <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden group max-w-sm">
-        {/* Image container with sophisticated effects */}
         <div className="relative">
           <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
             <div className="w-full h-full bg-gradient-to-br from-purple-200 to-pink-200" />
           </div>
-
-          {/* Badge with animation */}
           <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg">
             25% OFF
           </div>
-
-          {/* Quick view button */}
           <div className="absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <Eye className="w-4 h-4 text-slate-600" />
           </div>
-
-          {/* Like button */}
           <button className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors z-10">
             <Heart className="w-4 h-4 text-slate-600" />
           </button>
         </div>
 
-        {/* Content section */}
         <div className="p-4">
           <h3 className="font-semibold text-slate-900 mb-2 line-clamp-2">
             Wireless Headphones
           </h3>
 
-          {/* Rating */}
           <div className="flex items-center gap-2 mb-3">
             <div className="flex gap-1">
               {[1, 2, 3, 4].map((i) => (
@@ -869,13 +718,11 @@ const CardDemo = ({ id }: { id: string }) => {
             <span className="text-sm text-slate-600">(4.5)</span>
           </div>
 
-          {/* Price */}
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xl font-bold text-slate-900">$299</span>
             <span className="text-sm text-slate-500 line-through">$399</span>
           </div>
 
-          {/* Add to cart button */}
           <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2.5 px-4 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group">
             <ShoppingCart className="w-4 h-4" />
             <span>Add to Cart</span>
@@ -888,17 +735,13 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "blog-card": (
       <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer max-w-sm">
-        {/* Image container with parallax effect */}
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-400 to-pink-500">
-          {/* Animated overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* Category badge */}
           <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
             React
           </div>
 
-          {/* Action buttons */}
           <div className="absolute top-4 right-4 flex gap-2">
             <button className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors">
               <Bookmark className="w-4 h-4 text-slate-600" />
@@ -909,7 +752,6 @@ const CardDemo = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        {/* Content section */}
         <div className="p-6">
           <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
             Getting Started with React
@@ -919,7 +761,6 @@ const CardDemo = ({ id }: { id: string }) => {
             Learn the basics
           </p>
 
-          {/* Meta information */}
           <div className="flex items-center justify-between text-sm text-slate-500 mb-4">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5 group">
@@ -937,8 +778,6 @@ const CardDemo = ({ id }: { id: string }) => {
               </div>
             </div>
           </div>
-
-          {/* Likes and read more */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-sm text-slate-500">
               <Heart className="w-4 h-4" />
@@ -955,14 +794,12 @@ const CardDemo = ({ id }: { id: string }) => {
     ),
     "dashboard-card": (
       <div className="relative bg-white rounded-2xl shadow-lg p-6 border border-slate-200 overflow-hidden max-w-sm group">
-        {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50" />
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl" />
         </div>
 
         <div className="relative z-10">
-          {/* Header with icon and trend */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-emerald-100">
@@ -970,18 +807,12 @@ const CardDemo = ({ id }: { id: string }) => {
               </div>
               <h3 className="text-sm font-medium text-slate-600">Revenue</h3>
             </div>
-
-            {/* Change indicator */}
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold bg-emerald-100 text-emerald-700 border border-emerald-200">
               <TrendingUp className="w-3.5 h-3.5" />
               +12.5%
             </div>
           </div>
-
-          {/* Main value */}
           <p className="text-3xl font-bold text-slate-900 mb-6">$45,231</p>
-
-          {/* Enhanced chart visualization */}
           <div className="relative">
             <div className="flex items-end gap-1.5 h-20">
               {[30, 45, 35, 50, 40, 60].map((value, index) => (
@@ -993,11 +824,9 @@ const CardDemo = ({ id }: { id: string }) => {
               ))}
             </div>
 
-            {/* Chart baseline */}
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-200" />
           </div>
 
-          {/* Trend indicator dots */}
           <div className="flex items-center gap-2 mt-4">
             {[...Array(3)].map((_, i) => (
               <div
@@ -1018,7 +847,6 @@ const CardDemo = ({ id }: { id: string }) => {
   );
 };
 
-/* ─── Code Block ─── */
 const CodeBlock = ({
   code,
   label,
@@ -1046,13 +874,11 @@ const CodeBlock = ({
   );
 };
 
-/* ─── Tabbed Preview + Code Box ─── */
 const PreviewCodeTabs = ({ component }: { component: CardData }) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   return (
     <div className="rounded-2xl border border-white/5 bg-[#0B1120] overflow-hidden">
-      {/* Tab Header */}
       <div className="flex items-center justify-between px-2 py-2 border-b border-white/5 bg-white/[0.02]">
         <div className="flex">
           <button
@@ -1080,8 +906,6 @@ const PreviewCodeTabs = ({ component }: { component: CardData }) => {
         </div>
         {activeTab === "code" && <CopyButton text={component.code} />}
       </div>
-
-      {/* Tab Content */}
       {activeTab === "preview" ? (
         <div className="p-10 flex items-center justify-center min-h-[320px] bg-gradient-to-br from-slate-900/50 to-slate-800/30">
           <CardDemo id={component.id} />
@@ -1097,7 +921,6 @@ const PreviewCodeTabs = ({ component }: { component: CardData }) => {
   );
 };
 
-/* ─── Main Cards Preview Component ─── */
 function CardsPreview() {
   const searchParams = useSearchParams();
   const componentId = searchParams.get("component");
@@ -1155,7 +978,6 @@ function CardsPreview() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-white mb-2">
           {component.title}
@@ -1166,17 +988,13 @@ function CardsPreview() {
         </p>
       </div>
 
-      {/* Tabbed Preview + Code */}
       <PreviewCodeTabs component={component} />
-
-      {/* How to Use — Advice */}
       <div className="rounded-2xl border border-white/5 bg-[#0B1120] overflow-hidden">
         <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5 bg-white/[0.02] text-white/50 text-sm">
           <BookOpen className="w-4 h-4" />
           <span className="font-medium">How to Use</span>
         </div>
         <div className="p-5 space-y-4">
-          {/* Steps */}
           <div className="space-y-3">
             <div className="flex items-start gap-3">
               <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-400 text-xs font-bold shrink-0 mt-0.5">
@@ -1207,7 +1025,6 @@ function CardsPreview() {
               </p>
             </div>
           </div>
-          {/* Code snippet */}
           <div className="rounded-xl bg-black/30 border border-white/5 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
               <span className="text-xs text-white/30 font-mono">Example</span>
@@ -1224,14 +1041,12 @@ function CardsPreview() {
         </div>
       </div>
 
-      {/* Dependencies */}
       <div className="rounded-2xl border border-white/5 bg-[#0B1120] overflow-hidden">
         <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5 bg-white/[0.02] text-white/50 text-sm">
           <Package className="w-4 h-4" />
           <span className="font-medium">Dependencies</span>
         </div>
         <div className="p-5 space-y-4">
-          {/* Badges */}
           <div className="flex flex-wrap gap-2">
             {component.dependencies.map((dep) => (
               <span
@@ -1243,7 +1058,6 @@ function CardsPreview() {
             ))}
           </div>
 
-          {/* npm install command */}
           {npmInstallCmd && (
             <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-black/30 border border-white/5">
               <div className="flex items-center gap-2 overflow-x-auto">
@@ -1261,7 +1075,6 @@ function CardsPreview() {
   );
 }
 
-/* Add CSS animations */
 if (typeof document !== "undefined") {
   const style = document.createElement("style");
   style.textContent = `
