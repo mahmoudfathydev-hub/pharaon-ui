@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   ChevronDown,
   Layout,
@@ -15,28 +16,31 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import buttonsData from "@/data/Button.json";
+
+interface SidebarChild {
+  id: string;
+  label: string;
+}
 
 interface SidebarItem {
   id: number;
   title: string;
   icon: React.ReactNode;
-  children: Array<{
-    id: string;
-    label: string;
-    href?: string;
-  }>;
+  children: SidebarChild[];
 }
+
+const buttonChildren: SidebarChild[] = buttonsData.map((btn) => ({
+  id: btn.id,
+  label: btn.title,
+}));
 
 const sidebarItems: SidebarItem[] = [
   {
     id: 1,
     title: "Buttons",
     icon: <Square className="h-4 w-4" />,
-    children: [
-      { id: "btn-1", label: "Primary Button" },
-      { id: "btn-2", label: "Secondary Button" },
-      { id: "btn-3", label: "Outline Button" },
-    ],
+    children: buttonChildren,
   },
   {
     id: 2,
@@ -72,13 +76,21 @@ const sidebarItems: SidebarItem[] = [
 
 const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const activeComponent = searchParams.get("component");
+
+  const handleClick = (childId: string) => {
+    router.push(`/docs?component=${childId}`);
+    setOpen(false);
+  };
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <button
           className={cn(
-            "w-full flex items-center px-4 py-3 rounded-2xl",
+            "w-full flex items-center justify-between px-4 py-3 rounded-2xl",
             "bg-[#0F172A] border border-white/5",
             "transition-all duration-300",
             "hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10",
@@ -108,27 +120,37 @@ const SidebarDropdown = ({ item }: { item: SidebarItem }) => {
         align="start"
         side="right"
         className={cn(
-          "w-60 p-2 rounded-2xl",
+          "w-60 max-h-80 overflow-y-auto p-2 rounded-2xl",
           "bg-[#0B1120]/95 backdrop-blur-xl",
           "border border-white/5 shadow-2xl shadow-black/50",
           "animate-in fade-in-0 zoom-in-95"
         )}
       >
-        {item.children.map((child) => (
-          <DropdownMenuItem
-            key={child.id}
-            className={cn(
-              "px-3 py-2 rounded-xl text-sm cursor-pointer",
-              "text-white/70 transition-all duration-200",
-              "hover:bg-blue-500/15 hover:text-white hover:pl-4",
-              "focus:bg-blue-500/20 focus:outline-none"
-            )}
-            onClick={() => console.log(child.href)}
-          >
-            <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mr-2" />
-            {child.label}
-          </DropdownMenuItem>
-        ))}
+        {item.children.map((child) => {
+          const isActive = activeComponent === child.id;
+          return (
+            <DropdownMenuItem
+              key={child.id}
+              className={cn(
+                "px-3 py-2 rounded-xl text-sm cursor-pointer",
+                "transition-all duration-200",
+                "focus:outline-none",
+                isActive
+                  ? "bg-blue-500/20 text-white pl-4"
+                  : "text-white/70 hover:bg-blue-500/15 hover:text-white hover:pl-4 focus:bg-blue-500/20"
+              )}
+              onClick={() => handleClick(child.id)}
+            >
+              <div
+                className={cn(
+                  "h-1.5 w-1.5 rounded-full mr-2 shrink-0",
+                  isActive ? "bg-blue-400" : "bg-blue-500"
+                )}
+              />
+              {child.label}
+            </DropdownMenuItem>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );

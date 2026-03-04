@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Github, Globe, Linkedin, Heart } from "lucide-react";
 import Link from "next/link";
@@ -9,13 +11,13 @@ function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="lg:col-span-2 space-y-8">
             <div className="flex items-center gap-3">
-                <Image
-                  src="/images/logo.png"
-                  alt="Pharaon UI Logo"
-                  width={200}
-                  height={200}
-                  className="object-contain inverted-logo"
-                />
+              <Image
+                src="/images/logo.png"
+                alt="Pharaon UI Logo"
+                width={200}
+                height={200}
+                className="object-contain inverted-logo"
+              />
             </div>
             <p className="text-gray-400 text-lg leading-relaxed max-w-md">
               Built for developers who demand speed, type-safety, and visual
